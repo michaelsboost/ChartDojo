@@ -1,0 +1,260 @@
+:root {
+  color-scheme: dark;
+  --dojo-primary: #dc2626;
+  --dojo-secondary: #ea580c;
+  --dojo-accent: #f59e0b;
+  --dojo-bg: #0c0a09;
+  --dojo-surface: #1c1917;
+  --dojo-border: #44403c;
+}
+
+body {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(234, 88, 12, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, var(--dojo-bg) 0%, #1c1917 100%);
+  font-family: 'Courier New', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Dojo Training Interface */
+.dojo-interface {
+  background: var(--dojo-surface);
+  border: 3px solid var(--dojo-border);
+  border-radius: 16px;
+  position: relative;
+}
+
+.training-terminal {
+  background: #000;
+  border: 2px solid var(--dojo-primary);
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  position: relative;
+}
+
+.training-terminal::after {
+  content: '▶';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dojo-primary);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Battle UI Elements */
+.battle-panel {
+  background: linear-gradient(135deg, var(--dojo-surface) 0%, #292524 100%);
+  border: 2px solid var(--dojo-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.sensei-command {
+  background: #000;
+  border-left: 4px solid var(--dojo-primary);
+  padding: 1rem;
+  font-style: italic;
+  position: relative;
+}
+
+.sensei-command::before {
+  content: '"';
+  color: var(--dojo-primary);
+  font-size: 2rem;
+  position: absolute;
+  left: 8px;
+  top: 4px;
+}
+
+/* Trading Chart Display */
+.chart-battlefield {
+  background: 
+    linear-gradient(45deg, transparent 49%, rgba(220, 38, 38, 0.1) 50%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, rgba(220, 38, 38, 0.1) 50%, transparent 51%);
+  background-size: 20px 20px;
+  border: 3px solid var(--dojo-border);
+  border-radius: 8px;
+  position: relative;
+}
+
+/* Action Buttons - Martial Arts Inspired */
+.dojo-action {
+  background: linear-gradient(180deg, #57534e 0%, var(--dojo-surface) 100%);
+  border: 2px solid var(--dojo-border);
+  border-radius: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dojo-action::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.dojo-action:hover::before {
+  left: 100%;
+}
+
+.dojo-action:hover {
+  transform: translateY(-2px);
+  border-color: var(--dojo-primary);
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+}
+
+.dojo-action:active {
+  transform: translateY(0);
+}
+
+.action-bull {
+  border-color: #16a34a;
+  color: #16a34a;
+}
+
+.action-bear {
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+.action-neutral {
+  border-color: #d97706;
+  color: #d97706;
+}
+
+/* Progress & Stats */
+.xp-bar {
+  background: #374151;
+  border: 2px solid var(--dojo-border);
+  border-radius: 20px;
+  height: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+.xp-fill {
+  background: linear-gradient(90deg, #ea580c, #f59e0b);
+  height: 100%;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.xp-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-20px); }
+  100% { transform: translateX(100%); }
+}
+
+/* Mobile Adaptations */
+@media (max-width: 768px) {
+  .mobile-dojo {
+    padding: 0.5rem;
+  }
+  
+  .battle-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .dojo-action {
+    padding: 1rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .chart-battlefield {
+    min-height: 200px;
+  }
+}
+
+@media (min-width: 769px) {
+  .battle-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* Navigation - Dojo Style */
+.dojo-nav {
+  background: var(--dojo-surface);
+  border: 2px solid var(--dojo-border);
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.nav-sensei {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.nav-sensei.active {
+  background: var(--dojo-primary);
+  color: white;
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+}
+
+.nav-sensei:not(.active):hover {
+  background: #44403c;
+}
+
+/* Special Effects */
+.correct-flash {
+  animation: correctFlash 0.6s ease;
+}
+
+@keyframes correctFlash {
+  0% { background: transparent; }
+  50% { background: rgba(34, 197, 94, 0.3); }
+  100% { background: transparent; }
+}
+
+.incorrect-shake {
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Level Up Celebration */
+.level-up {
+  animation: levelUp 1s ease-out;
+}
+
+@keyframes levelUp {
+  0% { transform: scale(1); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+} 
+  @tailwind base;
+@tailwind components;
+@tailwind utilities;
